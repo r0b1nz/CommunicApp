@@ -9,6 +9,8 @@ import android.location.Location;
 import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
+import android.support.design.widget.FloatingActionButton;
+
 import android.support.design.widget.Snackbar;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -27,6 +29,8 @@ import com.sleepingteam.communicappmcproject.R;
 import com.sleepingteam.communicappmcproject.wifidirect.wifi.WiFiDirectActivity;
 
 import java.security.GeneralSecurityException;
+
+import static com.sleepingteam.communicappmcproject.R.id.fab;
 
 
 public class MainChatActivity extends AppCompatActivity implements LocationListener {
@@ -61,6 +65,15 @@ public class MainChatActivity extends AppCompatActivity implements LocationListe
                 .getSystemService(Context.LOCATION_SERVICE);
       
         email_id = getIntent().getStringExtra("EMAIL_ID");
+
+        FloatingActionButton fab_share = (FloatingActionButton) findViewById(fab);
+        fab_share.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Click action
+                wifidirectclick(view);
+            }
+        });
 
         // Link the Views in the layout to the Java code
         mInputText = (EditText) findViewById(R.id.messageInput);
